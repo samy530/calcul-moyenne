@@ -89,6 +89,10 @@ class App {
         this.modalMatiere = { visible: false, nom: '', coef: '1', isEdit: false, editItem: null };
         this.modalNote = { visible: false, nom: '', valeur: '', pourcentage: '100', isEdit: false, editItem: null };
         this.confirmCallback = null;
+        
+        // Détection si on est dans l'APK ou sur le web
+        this.isInApk = this.detectIfInApk();
+        
         this.loadData();
         this.render();
         setTimeout(() => {
@@ -102,6 +106,28 @@ class App {
         }, 2000);
         this.initConfirmModal();
         this.initPdfModal();
+    }
+    
+    // Méthode pour détecter si on est dans l'APK
+    detectIfInApk() {
+        // Méthode 1 : Vérifier si l'URL est file:// (dans l'APK)
+        if (window.location.protocol === 'file:') {
+            return true;
+        }
+        
+        // Méthode 2 : Vérifier si l'app est en mode standalone (installée)
+        if (window.matchMedia('(display-mode: standalone)').matches || 
+            window.navigator.standalone === true) {
+            return true;
+        }
+        
+        // Méthode 3 : Vérifier l'user agent (parfois Android WebView a des signatures spécifiques)
+        const ua = navigator.userAgent.toLowerCase();
+        if (ua.includes('wv') || ua.includes('webview')) {
+            return true;
+        }
+        
+        return false;
     }
 
     initConfirmModal() {
@@ -434,6 +460,16 @@ class App {
     }
 
     renderWelcome() {
+        // Afficher le bouton APK seulement si on n'est PAS dans l'APK
+        const apkButtonHtml = !this.isInApk ? `
+            <a href="apk/calculmoy.apk" download class="action-button-link">
+                <button class="action-button apk-btn">
+                    <span class="action-button-icon">📲</span>
+                    <span>Télécharger l'APK</span>
+                </button>
+            </a>
+        ` : '';
+        
         return `
             <div class="screen-welcome">
                 <div class="header">
@@ -456,12 +492,7 @@ class App {
                 </div>
                 
                 <div class="buttons-container">
-                    <a href="apk/CalculMoy.apk" download class="action-button-link">
-                        <button class="action-button apk-btn">
-                            <span class="action-button-icon">📲</span>
-                            <span>Télécharger l'APK (ANDROID)</span>
-                        </button>
-                    </a>
+                    ${apkButtonHtml}
                     
                     <button class="action-button pdf-btn" data-action="showPdfForm">
                         <span class="action-button-icon">📄</span>
