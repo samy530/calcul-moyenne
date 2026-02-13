@@ -443,6 +443,7 @@ class App {
                     <h1>Calcul Moyenne</h1>
                     <div class="subtitle">Gère tes notes facilement !</div>
                 </div>
+                
                 <div class="card">
                     <div class="card-header">
                         <span class="card-label">MOYENNE GÉNÉRALE</span>
@@ -453,10 +454,21 @@ class App {
                         <span class="moyenne-unit">/20</span>
                     </div>
                 </div>
-                <button class="fab pdf-fab" data-action="showPdfForm">
-                    <span class="fab-icon">📄</span>
-                    <span>Générer PDF</span>
-                </button>
+                
+                <div class="buttons-container">
+                    <a href="apk/CalculMoy.apk" download class="action-button-link">
+                        <button class="action-button apk-btn">
+                            <span class="action-button-icon">📲</span>
+                            <span>Télécharger l'APK (ANDROID)</span>
+                        </button>
+                    </a>
+                    
+                    <button class="action-button pdf-btn" data-action="showPdfForm">
+                        <span class="action-button-icon">📄</span>
+                        <span>Générer un relevé PDF</span>
+                    </button>
+                </div>
+                
                 <div class="section-title">MES SEMESTRES</div>
                 <div class="grid">
                     ${this.semestres.map((sem, index) => `

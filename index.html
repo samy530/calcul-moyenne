@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Calcul Moyenne</title>
-    
     <link rel="icon" type="image/png" sizes="36x36" href="icons/android-icon-36x36.png">
     <link rel="icon" type="image/png" sizes="48x48" href="icons/android-icon-48x48.png">
     <link rel="icon" type="image/png" sizes="72x72" href="icons/android-icon-72x72.png">
@@ -19,13 +18,10 @@
     <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-180x180.png">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-512x512.png">
-    
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#2196f3">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-    
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -56,16 +52,13 @@
         <div class="pdf-modal-content">
             <div class="pdf-modal-icon">📄</div>
             <h3 class="pdf-modal-title">Générer mon relevé</h3>
-            
             <p class="pdf-modal-subtitle">Tous les champs sont optionnels</p>
-            
             <input type="text" id="pdf-nom" class="pdf-input" placeholder="Nom (optionnel)">
             <input type="text" id="pdf-prenom" class="pdf-input" placeholder="Prénom (optionnel)">
             <input type="text" id="pdf-universite" class="pdf-input" placeholder="Université (optionnelle)">
             <input type="text" id="pdf-niveau" class="pdf-input" placeholder="Niveau (L1, L2, M1...) (optionnel)">
             <input type="text" id="pdf-annee" class="pdf-input" placeholder="Année scolaire (2024-2025) (optionnelle)">
             <input type="text" id="pdf-specialite" class="pdf-input" placeholder="Spécialité / Filière (optionnelle)">
-            
             <div class="pdf-modal-actions">
                 <button id="pdf-cancel" class="pdf-cancel-btn">Annuler</button>
                 <button id="pdf-generate" class="pdf-generate-btn">Générer PDF</button>
