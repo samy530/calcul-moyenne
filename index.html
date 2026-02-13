@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Calcul Moyenne</title>
-    <!-- Icônes pour mobile -->
-<!-- Android -->
 <link rel="icon" type="image/png" sizes="36x36" href="icons/android-icon-36x36.png">
 <link rel="icon" type="image/png" sizes="48x48" href="icons/android-icon-48x48.png">
 <link rel="icon" type="image/png" sizes="72x72" href="icons/android-icon-72x72.png">
@@ -13,7 +11,6 @@
 <link rel="icon" type="image/png" sizes="144x144" href="icons/android-icon-144x144.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
 
-<!-- iOS -->
 <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
@@ -23,7 +20,6 @@
 <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-180x180.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-512x512.png">
 
-<!-- Manifest -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2196f3">
     <style>
@@ -50,7 +46,6 @@
             position: relative;
         }
 
-        /* ==================== ÉCRAN WELCOME ==================== */
         .screen-welcome {
             padding: 20px;
         }
@@ -87,7 +82,6 @@
             font-size: 16px;
         }
 
-        /* ==================== CARTES ==================== */
         .card {
             background-color: white;
             border-radius: 20px;
@@ -141,7 +135,6 @@
             margin-bottom: 15px;
         }
 
-        /* ==================== GRILLE SEMESTRES ==================== */
         .grid {
             display: flex;
             flex-wrap: wrap;
@@ -206,7 +199,6 @@
             font-size: 12px;
         }
 
-        /* ==================== BARRE DE NAVIGATION ==================== */
         .app-bar {
             background-color: #2196f3;
             padding: 15px;
@@ -227,7 +219,6 @@
             font-weight: bold;
         }
 
-        /* ==================== FAB ==================== */
         .fab {
             position: fixed;
             bottom: 20px;
@@ -257,7 +248,6 @@
             font-size: 20px;
         }
 
-        /* ==================== LISTES ==================== */
         .list-content {
             padding: 16px;
             padding-bottom: 80px;
@@ -346,7 +336,6 @@
             color: #f44336;
         }
 
-        /* ==================== MODAL ==================== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -415,7 +404,6 @@
             color: white;
         }
 
-        /* ==================== EMPTY STATE ==================== */
         .empty-state {
             text-align: center;
             padding: 40px;
@@ -439,7 +427,6 @@
             color: #9e9e9e;
         }
 
-        /* ==================== NOTE CARD ==================== */
         .note-card {
             display: flex;
             align-items: center;
@@ -497,7 +484,6 @@
             background-color: #ffebee;
         }
 
-        /* ==================== PROGRESS BAR ==================== */
         .progress-bar {
             height: 10px;
             background-color: #e0e0e0;
@@ -536,7 +522,6 @@
             background-color: #ff9800;
         }
 
-        /* ==================== MODE SOMBRE ==================== */
         body.dark-mode {
             background-color: #121212;
         }
@@ -578,7 +563,6 @@
             color: #b0b0b0;
         }
 
-        /* ==================== HIDE ==================== */
         .hide {
             display: none;
         }
@@ -588,7 +572,6 @@
     <div id="app"></div>
 
     <script>
-        // ==================== MODÈLES ====================
         class Note {
             constructor(nom, valeur, pourcentage) {
                 this.nom = nom;
@@ -661,7 +644,6 @@
             }
         }
 
-        // ==================== APPLICATION PRINCIPALE ====================
         class App {
             constructor() {
                 this.semestres = [
@@ -674,7 +656,6 @@
                 this.selectedUE = null;
                 this.selectedMatiere = null;
                 
-                // Modals
                 this.modalUE = { visible: false, nom: '', coef: '1', isEdit: false, editItem: null };
                 this.modalMatiere = { visible: false, nom: '', coef: '1', isEdit: false, editItem: null };
                 this.modalNote = { visible: false, nom: '', valeur: '', pourcentage: '100', isEdit: false, editItem: null };
@@ -683,7 +664,6 @@
                 this.render();
             }
 
-            // ============ STORAGE ============
             saveData() {
                 try {
                     const data = {
@@ -736,7 +716,6 @@
                 }
             }
 
-            // ============ CALCULS ============
             get moyenneGenerale() {
                 let total = 0;
                 let count = 0;
@@ -760,7 +739,6 @@
                 this.render();
             }
 
-            // ============ CRUD UE ============
             ajouterUE(semestre, nom, coef) {
                 semestre.ues.push(new UE(nom, parseFloat(coef) || 1));
                 this.saveData();
@@ -780,7 +758,6 @@
                 this.render();
             }
 
-            // ============ CRUD MATIERE ============
             ajouterMatiere(ue, nom, coef) {
                 ue.matieres.push(new Matiere(nom, parseFloat(coef) || 1));
                 this.saveData();
@@ -800,7 +777,6 @@
                 this.render();
             }
 
-            // ============ CRUD NOTE ============
             ajouterNote(matiere, nom, valeur, pourcentage) {
                 matiere.notes.push(new Note(nom, parseFloat(valeur), parseFloat(pourcentage)));
                 this.saveData();
@@ -821,7 +797,6 @@
                 this.render();
             }
 
-            // ============ RENDU ============
             render() {
                 const app = document.getElementById('app');
                 
@@ -880,7 +855,7 @@
                         </div>
 
                         <div style="text-align: center; padding: 20px; color: #757575;">
-                            Fait par Samy ❤️
+                            Fait par Samy.M
                         </div>
                     </div>
                 `;
@@ -1140,14 +1115,11 @@
                 `;
             }
 
-            // ============ GESTION DES ÉVÉNEMENTS ============
             attachEvents() {
-                // Theme toggle
                 document.querySelectorAll('[data-action="toggleTheme"]').forEach(el => {
                     el.addEventListener('click', () => this.toggleTheme());
                 });
 
-                // Back button
                 document.querySelectorAll('[data-action="back"]').forEach(el => {
                     el.addEventListener('click', () => {
                         if (this.currentScreen === 'semestre') this.currentScreen = 'welcome';
@@ -1157,7 +1129,6 @@
                     });
                 });
 
-                // Sélection semestre
                 if (this.currentScreen === 'welcome') {
                     document.querySelectorAll('.semestre-card').forEach(el => {
                         el.addEventListener('click', (e) => {
@@ -1169,7 +1140,6 @@
                     });
                 }
 
-                // Sélection UE
                 if (this.currentScreen === 'semestre') {
                     document.querySelectorAll('.ue-card').forEach(el => {
                         el.addEventListener('click', (e) => {
@@ -1182,7 +1152,6 @@
                     });
                 }
 
-                // Sélection Matière
                 if (this.currentScreen === 'ue') {
                     document.querySelectorAll('.mat-card').forEach(el => {
                         el.addEventListener('click', (e) => {
@@ -1195,9 +1164,7 @@
                     });
                 }
 
-                // Actions UE
                 if (this.currentScreen === 'semestre') {
-                    // Ajouter UE
                     document.querySelectorAll('[data-action="addUE"]').forEach(el => {
                         el.addEventListener('click', () => {
                             this.modalUE = { visible: true, nom: '', coef: '1', isEdit: false, editItem: null };
@@ -1205,7 +1172,6 @@
                         });
                     });
 
-                    // Modifier UE
                     document.querySelectorAll('[data-action="editUE"]').forEach(el => {
                         el.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1223,7 +1189,6 @@
                         });
                     });
 
-                    // Supprimer UE
                     document.querySelectorAll('[data-action="deleteUE"]').forEach(el => {
                         el.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1235,9 +1200,7 @@
                     });
                 }
 
-                // Actions Matière
                 if (this.currentScreen === 'ue') {
-                    // Ajouter Matière
                     document.querySelectorAll('[data-action="addMatiere"]').forEach(el => {
                         el.addEventListener('click', () => {
                             this.modalMatiere = { visible: true, nom: '', coef: '1', isEdit: false, editItem: null };
@@ -1245,7 +1208,6 @@
                         });
                     });
 
-                    // Modifier Matière
                     document.querySelectorAll('[data-action="editMatiere"]').forEach(el => {
                         el.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1263,7 +1225,6 @@
                         });
                     });
 
-                    // Supprimer Matière
                     document.querySelectorAll('[data-action="deleteMatiere"]').forEach(el => {
                         el.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1275,9 +1236,7 @@
                     });
                 }
 
-                // Actions Note
                 if (this.currentScreen === 'matiere') {
-                    // Ajouter Note
                     document.querySelectorAll('[data-action="addNote"]').forEach(el => {
                         el.addEventListener('click', () => {
                             this.modalNote = { visible: true, nom: '', valeur: '', pourcentage: '100', isEdit: false, editItem: null };
@@ -1285,7 +1244,6 @@
                         });
                     });
 
-                    // Modifier Note
                     document.querySelectorAll('[data-action="editNote"]').forEach(el => {
                         el.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1304,7 +1262,6 @@
                         });
                     });
 
-                    // Supprimer Note
                     document.querySelectorAll('[data-action="deleteNote"]').forEach(el => {
                         el.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -1316,7 +1273,6 @@
                     });
                 }
 
-                // Gestion des modals
                 document.querySelectorAll('[data-action="closeModal"]').forEach(el => {
                     el.addEventListener('click', (e) => {
                         if (e.target === e.currentTarget || e.currentTarget.classList.contains('cancel-button')) {
@@ -1328,7 +1284,6 @@
                     });
                 });
 
-                // Sauvegarde UE
                 document.querySelectorAll('[data-action="saveUE"]').forEach(el => {
                     el.addEventListener('click', () => {
                         const nom = document.getElementById('modal-ue-nom')?.value;
@@ -1345,7 +1300,6 @@
                     });
                 });
 
-                // Sauvegarde Matière
                 document.querySelectorAll('[data-action="saveMatiere"]').forEach(el => {
                     el.addEventListener('click', () => {
                         const nom = document.getElementById('modal-matiere-nom')?.value;
@@ -1362,7 +1316,6 @@
                     });
                 });
 
-                // Sauvegarde Note
                 document.querySelectorAll('[data-action="saveNote"]').forEach(el => {
                     el.addEventListener('click', () => {
                         const nom = document.getElementById('modal-note-nom')?.value;
@@ -1388,7 +1341,6 @@
             }
         }
 
-        // ============ LANCEMENT ============
         const app = new App();
     </script>
 </body>
