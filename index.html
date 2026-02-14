@@ -36,6 +36,10 @@
         <p class="splash-text">Chargement...</p>
     </div>
 
+    <div class="offline-banner" style="display: none; background-color: #ff9800; color: white; text-align: center; padding: 8px; font-size: 14px; position: fixed; top: 0; left: 0; right: 0; z-index: 10000;">
+        📡 Mode hors-ligne - Les modifications seront synchronisées plus tard
+    </div>
+
     <div id="confirm-modal" class="modal confirm-modal">
         <div class="confirm-modal-content">
             <div class="confirm-modal-icon">⚠️</div>
@@ -68,6 +72,29 @@
 
     <div id="app"></div>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker enregistré');
+                    })
+                    .catch(error => {
+                        console.log('Erreur ServiceWorker:', error);
+                    });
+            });
+        }
+        
+        window.addEventListener('online', () => {
+            document.querySelector('.offline-banner').style.display = 'none';
+            document.body.classList.remove('offline');
+        });
+        
+        window.addEventListener('offline', () => {
+            document.querySelector('.offline-banner').style.display = 'block';
+            document.body.classList.add('offline');
+        });
+    </script>
     <script src="./js/app.js"></script>
 </body>
 </html>

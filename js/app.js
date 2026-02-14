@@ -111,17 +111,14 @@ class App {
         if (window.location.protocol === 'file:') {
             return true;
         }
-        
         if (window.matchMedia('(display-mode: standalone)').matches || 
             window.navigator.standalone === true) {
             return true;
         }
-        
         const ua = navigator.userAgent.toLowerCase();
         if (ua.includes('wv') || ua.includes('webview')) {
             return true;
         }
-        
         return false;
     }
 
